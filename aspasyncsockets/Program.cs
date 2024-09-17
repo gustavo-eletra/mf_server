@@ -20,7 +20,16 @@ app.UseAuthorization();
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
 
-app.MapPost("/mouse_entered", () => Console.WriteLine("Here!"));
-app.MapPost("/clicked", () => Console.WriteLine("There!"));
+app.MapPost("/mouse_entered", () => 
+{
+    Console.WriteLine("Here!");
+    return "<p>Bitch</p>";
+});
+
+app.MapPost("/clicked", () => 
+{
+    Console.WriteLine("There!");
+    return "<button hx-post='/clicked' hx-swap='outerHTML'> This! </button>";
+});
 
 app.Run();
