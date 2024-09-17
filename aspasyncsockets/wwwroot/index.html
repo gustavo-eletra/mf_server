@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/pico.min.css">
+    </head>
+    <body>
+        <p>
+            Hello!
+        </p>
+
+        <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+        <!-- have a button POST a click via AJAX -->
+        <button hx-post="/clicked" hx-swap="outerHTML">
+          Click Me
+        </button>
+    </body>
+    <div hx-post="/mouse_entered" hx-trigger="mouseenter once">
+        [Here Mouse, Mouse!]
+    </div>
+
+    <div>
+        <canvas id="myChart"></canvas>
+      </div>
+      
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+</html>
