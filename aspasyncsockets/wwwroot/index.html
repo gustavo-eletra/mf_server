@@ -1,29 +1,34 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="css/pico.min.css">
-    </head>
-    <body>
-        <p>
-            Hello!
-        </p>
-
-        <script src="https://unpkg.com/htmx.org@2.0.2"></script>
-        <!-- have a button POST a click via AJAX -->
-        <button hx-post="/clicked" hx-swap="outerHTML">
-          Click Me
-        </button>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"> 
+    <link rel="stylesheet" href="css/pico.min.css">
+    <title>Meter farm</title>
+</head>
+<body>
+    
+    <a href="./pages/esp_node.html">another file</a>
+    <button hx-post="/clicked" hx-swap="outerHTML">
+        Click Me
+    </button>
+    
     <div hx-post="/mouse_entered" hx-trigger="mouseenter once">
-        [Here Mouse, Mouse!]
+        [Hey!]
     </div>
 
     <div>
         <canvas id="myChart"></canvas>
+    </div>
+    <div hx-get="/graph" hx-trigger="load">
+        <img alt="Result loading..." class="htmx-indicator" width="150" src="/img/bars.svg"/>
       </div>
-      
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      
-      <script>
+    <script>
         const ctx = document.getElementById('myChart');
       
         new Chart(ctx, {
@@ -45,4 +50,5 @@
           }
         });
       </script>
+</body>
 </html>
