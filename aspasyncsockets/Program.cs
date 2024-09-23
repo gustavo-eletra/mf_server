@@ -34,7 +34,7 @@ app.MapPost("/clicked", () =>
     return "<button hx-post='/clicked' hx-swap='outerHTML'> This! </button>";
 });
 
-app.MapGet("/graph", () => 
+app.MapGet("/node/{id}", () => 
 {
     return "what";
 });
