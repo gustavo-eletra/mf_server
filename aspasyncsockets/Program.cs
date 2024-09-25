@@ -1,5 +1,5 @@
 using System.Reflection.Metadata.Ecma335;
-
+var abnt_c_queue = new Queue<ABNTUserData>();
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
@@ -32,6 +32,14 @@ app.MapPost("/clicked", () =>
 {
     Console.WriteLine("There!");
     return "<button hx-post='/clicked' hx-swap='outerHTML'> This! </button>";
+});
+
+app.MapPost("/command", (ABNTUserData data) =>
+{
+    abnt_c_queue.Enqueue(data);
+    Console.WriteLine(data.ToString);
+    Console.WriteLine("Hit");
+    return "bitch";
 });
 
 app.MapGet("/node/{id}", () => 

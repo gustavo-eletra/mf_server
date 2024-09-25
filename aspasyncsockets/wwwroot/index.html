@@ -1,54 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/htmx.org@2.0.2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"> 
-    <link rel="stylesheet" href="css/pico.min.css">
-    <title>Meter farm</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="./js/"></script>
 </head>
 <body>
-    
-    <a href="./pages/esp_node.html">another file</a>
-    <button hx-post="/clicked" hx-swap="outerHTML">
-        Click Me
-    </button>
-    
-    <div hx-post="/mouse_entered" hx-trigger="mouseenter once">
-        [Hey!]
-    </div>
-
-    <div>
-        <canvas id="myChart"></canvas>
-    </div>
-    <div hx-get="/graph" hx-trigger="load">
-        <img alt="Result loading..." class="htmx-indicator" width="150" src="/img/bars.svg"/>
-      </div>
-    <script>
-        const ctx = document.getElementById('myChart');
-      
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-      </script>
+<h3>Signup Form</h3>
+<form hx-post="/command">
+  <div hx-target="this" hx-swap="outerHTML">
+    <label>Email Address</label>
+    <input name="email" hx-post="/contact/email" hx-indicator="#ind">
+  </div>
+  <div class="form-group">
+    <label>First Name</label>
+    <input type="text" class="form-control" name="firstName">
+  </div>
+  <div class="form-group">
+    <label>Last Name</label>
+    <input type="text" class="form-control" name="lastName">
+  </div>
+  <button class="btn primary">Submit</button>
+</form>
 </body>
 </html>
